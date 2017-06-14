@@ -1,11 +1,8 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sidekiq/trackable_batch/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sidekiq-trackable_batch"
-  spec.version       = Sidekiq::TrackableBatch::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["darrhiggs"]
   spec.email         = ["darrhiggs+git@gmail.com"]
 

@@ -1,5 +1,3 @@
-require "sidekiq/trackable_batch/version"
-
 begin
   require 'sidekiq-pro'
 rescue LoadError
@@ -11,8 +9,13 @@ rescue LoadError
   end
 end
 
+require 'sidekiq/trackable_batch/worker'
+
 module Sidekiq
-  module TrackableBatch
-    # Your code goes here...
+  class TrackableBatch < Sidekiq::Batch
+    class << self
+      def tracking(trackable_batch)
+      end
+    end
   end
 end

@@ -63,7 +63,7 @@ When a `Sidekiq::TrackableBatch` is setup as above, with two `MyWorker` jobs.
 Then the following API can be used to access progress data:
 
 ```ruby
-tracking = Sidekiq::TrackableBatch::tracking(trackable_batch.tid) # tid is the tracking id
+tracking = Sidekiq::TrackableBatch::tracking(trackable_batch)
 tracking.to_h # => { max: 152, value: 62 }
 # if a value is not yet known, a nil will be returned in its place.
 ```
