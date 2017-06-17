@@ -8,9 +8,9 @@ Add the following to your application's Gemfile:
 
 ```ruby
 gem 'sidekiq-trackable_batch'
-#  and either
+#	and either
 gem 'sidekiq-pro'
-#  or
+#	or
 gem 'sidekiq-batch'
 ```
 
@@ -28,9 +28,9 @@ Or install it yourself as:
 
 ```ruby
 trackable_batch = Sidekiq::TrackableBatch.new
-# set callbacks & description etc as required
+#	set callbacks & description etc as required
 trackable_batch.jobs
-  # enqueue some background work
+#	enqueue some background work
 end
 ```
 
@@ -45,6 +45,7 @@ trackable_batch.invalidate_all
 ### Basic
 
 Given the following worker:
+
 ```ruby
 class MyWorker
   include Sidekiq::TrackableBatch::Worker # also includes sidekiq worker
@@ -63,7 +64,7 @@ When a `Sidekiq::TrackableBatch` is setup as above, with two `MyWorker` jobs.
 Then the following API can be used to access progress data:
 
 ```ruby
-tracking = Sidekiq::TrackableBatch::tracking(trackable_batch.tid) # tid is the tracking id
+tracking = Sidekiq::TrackableBatch.track(trackable_batch)
 tracking.to_h # => { max: 152, value: 62 }
 # if a value is not yet known, a nil will be returned in its place.
 ```
