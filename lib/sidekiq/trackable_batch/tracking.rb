@@ -1,26 +1,26 @@
+# frozen_string_literal: true
+require 'sidekiq/trackable_batch/persistance'
+
 module Sidekiq
   class TrackableBatch < Batch
-    # Access TrackableBatch progress data.
+    # Access TrackableBatch progress data (status).
     class Tracking
+      include Persistance
+
       # @param (see TrackableBatch#initialize)
       def initialize(bid)
-        @status_key = "TB:#{bid}:STATUS"
+        @bid = bid
       end
 
-      # @return [Hash] the TrackableBatch's current progress
+      # Get the current status of a {TrackableBatch} as a hash. (network request)
+      # @return [Hash] the {TrackableBatch}'s current status
       def to_h
+        status = get_status(@bid).reduce({}) { |m, (k, v)| m.merge k.to_sym => v }
         {
-          max: status[:max].to_i,
-          value: status[:value] ? status[:value].to_i : nil
+          max: status.delete(:max).to_i,
+          value: status[:value] ? status.delete(:value).to_i : nil,
+          **status
         }
-      end
-
-      private
-
-      def status
-        Sidekiq.redis do |c|
-          c.hgetall @status_key
-        end.symbolize_keys
       end
     end
   end
