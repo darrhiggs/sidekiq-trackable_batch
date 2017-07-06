@@ -1,5 +1,5 @@
 sudo: false
 language: ruby
-rvm:
-  - 2.4.0
-before_install: gem install bundler -v 1.14.6
+before_install: gem install bundler -v 1.15.1
+install: bin/setup
+script: bundle exec appraisal sidekiq-pro rake
