@@ -119,8 +119,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-[da]: TODO
-[dar]: TODO
+[da]: https://sidekiq-trackable-batch-demo.herokuapp.com/
+[dar]: https://github.com/darrhiggs/sidekiq_trackable_batch_demo_app
 [docs]: TODO
 [rcwwb]: https://github.com/mperham/sidekiq/wiki/Really-Complex-Workflows-with-Batches
 [saj#c]: https://github.com/mperham/sidekiq/wiki/Active-Job#commercial-features
